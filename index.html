@@ -1,16 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <div id="app">
-        <h1>{{ name + ' ' + lastname }}</h1>
+        <section id="basics">
+            <h3>Basics</h3>
+            <div>
+                <h1 v-bind:title="titleContainer.h1title">{{ fullname }}</h1>
+
+                <div>
+                    <div style="padding-bottom: 20px">
+                        <label for="nameIpt">Name: </label>
+                        <input id="nameIpt" name="nameIpt" v-model="name" placeholder="Put your new name" />
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="conditions">
+            <h3>Conditions</h3>
+            <div>
+                <h4 style="margin-left: 20px">Changing value</h4>
+                <div v-if="isEditable">
+                    <label for="lastnameIpt">Lastname: </label>
+                    <input id="lastnameIpt" name="lastnameIpt" v-model="lastname" placeholder="Put your new lastname" />
+                </div>
+                <div v-else>
+                    Click toggle me!
+                </div>
+
+                <button v-on:click="isEditable = !isEditable">Toggle edit lastname</button>
+            </div>
+            <div>
+                <h4 style="margin-left: 20px">Computed properties</h4>
+                <div v-if="onetimeComputedIsValid">
+                    <span>One time computed is true</span>
+                </div>
+                <div v-else>
+                    <span>One time computed is false</span>
+                </div>
+                <br />
+                <button v-on:click="onetimeComputedIsValid = !onetimeComputedIsValid">Toggle onetimeComputedIsValid</button>
+            </div>
+        </section>
+        <section id="loops">
+            
+        </section>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="js/numbers.js"></script>
+    <script src="js/validator.js"></script>
     <script src="js/main.js"></script>
 </body>
+
 </html>
