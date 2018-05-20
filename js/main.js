@@ -22,6 +22,16 @@ var vue = new Vue({
             let isValid = validator.isValid(this.myNumber);
             console.log('myNumber is', isValid ? 'greater' : 'smaller', 'than 0.5');
             return isValid;
+        },
+
+        onceCurrentDate: function() {
+            return Date.now();
         }
-    }
+    },
+
+    methods: {
+        currentDate: function() {
+            return Date.now();
+        }
+    },
 });
