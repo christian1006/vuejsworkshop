@@ -50,6 +50,13 @@
                 <button v-on:click="onetimeComputedIsValid = !onetimeComputedIsValid">Toggle onetimeComputedIsValid</button>
             </div>
         </section>
+
+
+
+
+
+
+
         <section id="watchs">
             <h3 style="text-align: center">Watch example</h3>
             <div id="watch-example">
@@ -60,6 +67,19 @@
                 <p>{{ answer }}</p>
             </div>
         </section>
+        <section id="loops">
+            <p v-for="(value,key,index) in {name: 'Rafal', lastname: 'Czabaj'}">
+                ElementValue: {{ value }} ; ElementKey: {{ key }} ; ElementIndex: {{ index }}
+            </p>
+
+            <h4>Loops excercise</h4>
+            <input type="button" v-on:click="addNumber()" value="Add Number"/>
+
+            <div v-for="number in even(numbers)">
+                <p v-if="number % 2 == 0">{{number}}</p>
+            </div>
+        </section>
+
     </div>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>

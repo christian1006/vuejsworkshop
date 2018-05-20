@@ -9,7 +9,9 @@ var vue = new Vue({
             h1title: 'h1 title',
         },
         question: '',
-        answer: 'I cannot give you an answer until you ask a question!'
+        answer: 'I cannot give you an answer until you ask a question!',
+        numbers: [1, 2, 3],
+        iterator: 0
     },
 
     computed: {
@@ -26,42 +28,52 @@ var vue = new Vue({
             return isValid;
         },
 
-        onceCurrentDate: function () {
-            return Date.now();
+        computedNumbers: function () {
+            return numbers.getNumbers();
         }
     },
 
     methods: {
-        currentDate: function () {
-            return Date.now();
+        even: function (array) {
+            return array.filter(n => n % 2 === 0);
         },
 
-        // getAnswer: function () {
-        //     if (this.question.indexOf('?') === -1) {
-        //         this.answer = 'Questions usually contain a question mark. ;-)'
-        //         return
-        //     }
-        //     this.answer = 'Thinking...'
-        //     var vm = this
-        //     axios.get('https://yesno.wtf/api')
-        //         .then(function (response) {
-        //             vm.answer = _.capitalize(response.data.answer)
-        //         })
-        //         .catch(function (error) {
-        //             vm.answer = 'Error! Could not reach the API. ' + error
-        //         })
-        // }
+        addNumber: function () {
+            this.numbers.push(this.iterator);
+            this.iterator++;
+        },
+
+        methodNumbers: function () {
+            return numbers.getNumbers();
+        },
+
+        getAnswer: function () {
+            if (this.question.indexOf('?') === -1) {
+                this.answer = 'Questions usually contain a question mark. ;-)'
+                return
+            }
+            this.answer = 'Thinking...'
+            var vm = this
+            axios.get('https://yesno.wtf/api')
+                .then(function (response) {
+                    vm.answer = _.capitalize(response.data.answer)
+                })
+                .catch(function (error) {
+                    vm.answer = 'Error! Could not reach the API. ' + error
+                })
+        }
     },
 
-    // watch: {
-    //     question: function (newQuestion, oldQuestion) {
-    //         this.answer = 'Waiting for you to stop typing...'
-    //         this.debouncedGetAnswer()
-    //     }
-    // },
+    watch: {
+        question: function (newQuestion, oldQuestion) {
+            this.answer = 'Waiting for you to stop typing...'
+            console.log(newQuestion);
+            this.debouncedGetAnswer()
+        }
+    },
 
-    // created: function () {
-    //     this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)
-    // },
+    created: function () {
+        this.debouncedGetAnswer = _.debounce(this.getAnswer, 1500)
+    },
 
 });
