@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <title>Document</title>
 </head>
 
 <body>
-    <div id="app">
+    <div class="container" id="app">
         <section id="basics">
-            <h3>Basics</h3>
+            <h3 style="text-align: center">Basics</h3>
             <div>
                 <h1 v-bind:title="titleContainer.h1title">{{ fullname }}</h1>
 
@@ -24,7 +25,7 @@
             </div>
         </section>
         <section id="conditions">
-            <h3>Conditions</h3>
+            <h3 style="text-align: center">Conditions</h3>
             <div>
                 <h4 style="margin-left: 20px">Changing value</h4>
                 <div v-if="isEditable">
@@ -49,11 +50,23 @@
                 <button v-on:click="onetimeComputedIsValid = !onetimeComputedIsValid">Toggle onetimeComputedIsValid</button>
             </div>
         </section>
-        <section id="loops">
-            
+        <section id="watchs">
+            <h3 style="text-align: center">Watch example</h3>
+            <div id="watch-example">
+                <p>
+                    Ask a yes/no question:
+                    <input v-model="question">
+                </p>
+                <p>{{ answer }}</p>
+            </div>
         </section>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
     <script src="js/numbers.js"></script>
     <script src="js/validator.js"></script>
     <script src="js/main.js"></script>
