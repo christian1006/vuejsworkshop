@@ -24,7 +24,7 @@ var vue = new Vue({
         },
 
         getAnimalById: function (id) {
-            axios.get(/* Put here the url */)
+            axios.get('http://localhost:3000/animals')
             .then(function (response) {
                 /* code for adding data from response to the animal array */
             })
